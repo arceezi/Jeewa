@@ -8,19 +8,37 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Lenovo
+ * @author Ralf
  */
 public class Student {
-    private int studentID;
+    private String studentID;
     private String name;
     private String password;
-    private ArrayList<Subject> subjects;
+    private ArrayList<Subject> subjects = new ArrayList<>();
 
-    public Student(int studentID, String name, String password) {
+    public void setStudentID(String studentID) {
         this.studentID = studentID;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setSubjects(ArrayList<Subject> subjects) {
+        this.subjects = subjects;
+    }
+    
+    public void addSubject(Subject subject){
+        subjects.add(subject);
+        
+    }
+    
+    
+    
     
     
     
