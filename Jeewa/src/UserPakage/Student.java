@@ -13,7 +13,14 @@ import java.util.ArrayList;
 public class Student {
     private int studentID;
     private String name;
-    private ArrayList<Grade> grades;
+    private String password;
+    private ArrayList<Subject> subjects;
+
+    public Student(int studentID, String name, String password) {
+        this.studentID = studentID;
+        this.name = name;
+        this.password = password;
+    }
     
     
     
