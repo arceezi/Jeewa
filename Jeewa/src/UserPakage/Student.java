@@ -20,6 +20,14 @@ public class Student {
         return studentUsername;
     }
 
+    public ArrayList<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public void setStudentUsername(String studentUsername) {
         this.studentUsername = studentUsername;
     }

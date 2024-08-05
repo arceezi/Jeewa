@@ -17,6 +17,18 @@ public class Activity {
         this.activityName = activityName;
     }
 
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
     public void setGrade(double grade) {
         this.grade = grade;
     }

@@ -8,6 +8,6 @@ package UserHandler;
  *
  * @author Ralf
  */
-public class UserDBHandler {
+public class UserLoginHandler {
     
 }

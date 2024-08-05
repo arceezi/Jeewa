@@ -23,9 +23,13 @@ import java.util.List;
  */
 public class UserFileHandler {
     private static UserFileHandler fileHandler = null;
-    private Student student;
+    private static final File studentDB = new File("src/UserHandler/StudentDB.txt");
+
+    public static File getStudentDB() {
+        return studentDB;
+    }
     
-    public UserFileHandler getInstance(){
+    public static UserFileHandler getInstance(){
         if(fileHandler == null){
             fileHandler = new UserFileHandler();
         }
@@ -33,7 +37,7 @@ public class UserFileHandler {
         return fileHandler;
     }
     
-    public void sortStudentDBUsername(ArrayList<String> arrayList){
+    public void sortStudentDBUsername(List<String> arrayList){
         
         Collections.sort(arrayList, new Comparator<String>() {
             @Override
@@ -45,15 +49,47 @@ public class UserFileHandler {
         });  
     }
     
-    public void recordUser(Student student){
-        
-        
-        
-        
+    public void recordStudent(Student student) throws IOException{
+        List<String> lines = readDataFromFile(studentDB);
+        lines.add(student.getStudentUsername() + ":" + student.getPassword());
+        sortStudentDBUsername(lines);
+        writeDataToFile(studentDB, lines);
+        File studentData = new File("src/UserSubjectsDatabase/" + student.getStudentUsername() + ".txt");
+        studentData.createNewFile();
     }
     
-    public ArrayList<String> readDataFromFile(File file) {
-        ArrayList<String> lines = new ArrayList<>();
+    public void saveStudentData(Student student) throws IOException{
+        
+        File studentData = new File("src/UserSubjectsDatabase/" + student.getStudentUsername() + ".txt");
+        List<List<String>> dataHolder = new ArrayList<>();
+        for (int i = 0; i < student.getSubjects().size(); i++) {
+            List<String> dataRow = new ArrayList<>();
+            dataRow.add(student.getSubjects().get(i).getCourseID());
+            dataRow.add(student.getSubjects().get(i).getName());
+            dataRow.add(student.getSubjects().get(i).getBatchNumber());
+            dataRow.add(student.getSubjects().get(i).isPassOrFail() ? "1" : "0");
+            for (int j = 0; j < student.getSubjects().get(i).getActivities().size(); j++) {
+                dataRow.add(student.getSubjects().get(i).getActivities().get(j).getActivityName());
+                dataRow.add(Double.toString(student.getSubjects().get(i).getActivities().get(j).getGrade()));
+                dataRow.add(Double.toString(student.getSubjects().get(i).getActivities().get(j).getWeight()));
+            }
+            dataHolder.add(dataRow);
+        }
+        List<String> lines = new ArrayList<>();
+        for (List<String> dataRow : dataHolder) {
+            StringBuilder lineHolder = new StringBuilder();
+            for (int k = 0; k < dataRow.size() - 1; k++) {
+                lineHolder.append(dataRow.get(k)).append(":");
+            }
+            lineHolder.append(dataRow.get(dataRow.size() - 1));
+            lines.add(lineHolder.toString());
+        }
+        lines.add(0, student.getStudentUsername());
+        writeDataToFile(studentData, lines);
+    }
+    
+    public List<String> readDataFromFile(File file) {
+        List<String> lines = new ArrayList<>();
 
         try {
             if (!file.exists()) {
@@ -73,12 +109,13 @@ public class UserFileHandler {
         return lines;
     }
     
-    public void writeDataToFile(File file, ArrayList<String> list) throws IOException{
-        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-        for(String line : list){
-            writer.write(line);
-            writer.newLine();
-        } 
+    public void writeDataToFile(File file, List<String> list) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            for (String line : list) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
     }
      
 }

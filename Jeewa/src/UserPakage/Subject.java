@@ -21,6 +21,22 @@ public class Subject {
         return courseID;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getBatchNumber() {
+        return batchNumber;
+    }
+
+    public ArrayList<Activity> getActivities() {
+        return activities;
+    }
+
+    public boolean isPassOrFail() {
+        return passOrFail;
+    }
+
     public void setCourseID(String courseID) {
         this.courseID = courseID;
     }
