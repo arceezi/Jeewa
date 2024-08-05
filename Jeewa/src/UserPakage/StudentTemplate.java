@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public abstract class StudentTemplate {
     protected Student student;
     
-    public abstract StudentBuilder buildStudentID(String studentID);
+    public abstract StudentBuilder buildStudentUsername(String studentID);
     public abstract StudentBuilder buildStudentName(String studentName);
     public abstract StudentBuilder buildStudentPassword(String studentPassword);
     public abstract Student buildStudent();

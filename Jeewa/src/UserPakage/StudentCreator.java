@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class StudentCreator {
     
     public static void createStudent(StudentTemplate studentTemplate, String studentID, String studentName, String Password){
-        studentTemplate.buildStudentID(studentID)
+        studentTemplate.buildStudentUsername(studentID)
                        .buildStudentName(studentName)
                        .buildStudentPassword(Password)
                        .buildStudent();

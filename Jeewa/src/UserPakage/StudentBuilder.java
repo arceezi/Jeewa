@@ -17,8 +17,8 @@ public class StudentBuilder extends StudentTemplate {
     }
     
     @Override
-    public StudentBuilder buildStudentID(String studentID) {
-        student.setStudentID(studentID);
+    public StudentBuilder buildStudentUsername(String studentID) {
+        student.setStudentUsername(studentID);
         return this;
     }
 

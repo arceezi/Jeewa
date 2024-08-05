@@ -11,13 +11,13 @@ import java.util.ArrayList;
  * @author Ralf
  */
 public class Student {
-    private String studentID;
+    private String studentUsername;
     private String name;
     private String password;
     private ArrayList<Subject> subjects = new ArrayList<>();
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
+    public void setStudentUsername(String studentUsername) {
+        this.studentUsername = studentUsername;
     }
 
     public void setName(String name) {
