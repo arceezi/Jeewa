@@ -16,6 +16,10 @@ public class Student {
     private String password;
     private ArrayList<Subject> subjects = new ArrayList<>();
 
+    public String getStudentUsername() {
+        return studentUsername;
+    }
+
     public void setStudentUsername(String studentUsername) {
         this.studentUsername = studentUsername;
     }
