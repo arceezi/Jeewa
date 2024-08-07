@@ -12,8 +12,8 @@ import java.util.ArrayList;
  */
 public class StudentCreator {
     
-    public static void createStudent(StudentTemplate studentTemplate, String studentID, String studentName, String Password){
-        studentTemplate.buildStudentUsername(studentID)
+    public static void createStudent(StudentTemplate studentTemplate, String studentUsername, String studentName, String Password){
+        studentTemplate.buildStudentUsername(studentUsername)
                        .buildStudentName(studentName)
                        .buildStudentPassword(Password)
                        .buildStudent();
