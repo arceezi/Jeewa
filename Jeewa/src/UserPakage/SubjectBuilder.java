@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Ralf
  */
-class SubjectBuilder extends SubjectTemplate{
+public class SubjectBuilder extends SubjectTemplate{
     
     public SubjectBuilder(){
         this.subject = new Subject();

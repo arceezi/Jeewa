@@ -4,7 +4,11 @@
  */
 package UserHandler;
 
+import UserPakage.ActivityBuilder;
+import UserPakage.ActivityCreator;
 import UserPakage.Student;
+import UserPakage.SubjectBuilder;
+import UserPakage.SubjectCreator;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -86,6 +90,37 @@ public class UserFileHandler {
         }
         lines.add(0, student.getStudentUsername());
         writeDataToFile(studentData, lines);
+    }
+    
+    public void loadStudentData(Student student){
+        
+        File studentData = new File("src/UserSubjectsDatabase/" + student.getStudentUsername() + ".txt");
+        List<String> lines = readDataFromFile(studentData);
+        if (lines == null || lines.isEmpty()) {
+            return;
+        }
+        for(int i = 1; i < lines.size(); i++){
+            String line = lines.get(i);
+            String [] lineParts = line.split(":");
+            if(lineParts.length < 4){
+                continue;
+            }
+            boolean passFail = lineParts[3].equals("1");
+            student.addSubject(SubjectCreator.createSubject(new SubjectBuilder(), 
+                                                            lineParts[0], 
+                                                            lineParts[1], 
+                                                            lineParts[2], 
+                                                            passFail));
+            for(int j = 4; j < lineParts.length; j+=3){
+                if(lineParts.length < j+2){
+                    break;
+                }
+                student.getSubjects().get(i-1).addActivity(ActivityCreator.createActivity(new ActivityBuilder(), 
+                                                                                          lineParts[j], 
+                                                                                          Double.parseDouble(lineParts[j+1]), 
+                                                                                          Double.parseDouble(lineParts[j+2])));
+            }
+        } 
     }
     
     public List<String> readDataFromFile(File file) {

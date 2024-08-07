@@ -11,13 +11,12 @@ import java.util.ArrayList;
  * @author Ralf
  */
 public class SubjectCreator {
-    public static void createSubject(SubjectTemplate subjectTemplate, String courseID, String subjectName, String batchNumber, boolean passOrFail){
-        subjectTemplate.buildCourseID(courseID)
-                       .buildSubjectName(subjectName)
-                       .buildBatchNumber(batchNumber)
-                       .buildPassOrFail(passOrFail)
-                       .buildSubject();
-        
+    public static Subject createSubject(SubjectTemplate subjectTemplate, String courseID, String subjectName, String batchNumber, boolean passOrFail){
+        return subjectTemplate.buildCourseID(courseID)
+                              .buildSubjectName(subjectName)
+                              .buildBatchNumber(batchNumber)
+                              .buildPassOrFail(passOrFail)
+                              .buildSubject(); 
     }
 }
 

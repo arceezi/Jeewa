@@ -8,7 +8,7 @@ package UserPakage;
  *
  * @author Ralf
  */
-class ActivityBuilder extends ActivityTemplate{
+public class ActivityBuilder extends ActivityTemplate{
     
     public ActivityBuilder(){
         this.activity = new Activity();

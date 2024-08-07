@@ -9,10 +9,10 @@ package UserPakage;
  * @author Ralf
  */
 public class ActivityCreator {
-    public static void createActivity(ActivityTemplate activityTemplate, String activityName, double grade, double weight){
-        activityTemplate.BuildActivityName(activityName)
-                        .BuildActivityGrade(grade)
-                        .BuildActivityWeight(weight)
-                        .BuildActivity();
+    public static Activity createActivity(ActivityTemplate activityTemplate, String activityName, double grade, double weight){
+        return activityTemplate.BuildActivityName(activityName)
+                               .BuildActivityGrade(grade)
+                               .BuildActivityWeight(weight)
+                               .BuildActivity();
     }
 }
